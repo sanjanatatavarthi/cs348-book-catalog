@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="page-header">
+    <h1>Books</h1>
+    <a class="button" href="{{ url_for('add_book') }}">Add New Book</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Rating</th>
+        <th>Reviews</th>
+        <th>Price</th>
+        <th>Year</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in books %}
+        <tr>
+          <td>{{ book['title'] }}</td>
+          <td>{{ book['author_name'] }}</td>
+          <td>{{ book['genre_name'] }}</td>
+          <td>{{ book['user_rating'] }}</td>
+          <td>{{ book['reviews'] }}</td>
+          <td>${{ '%.2f'|format(book['price']) if book['price'] is not none else '' }}</td>
+          <td>{{ book['year'] }}</td>
+          <td>
+            <div class="actions">
+              <a class="button secondary" href="{{ url_for('edit_book', book_id=book['book_id']) }}">Edit</a>
+              <form action="{{ url_for('delete_book', book_id=book['book_id']) }}" method="post" onsubmit="return confirm('Delete this book?');">
+                <button class="button danger" type="submit">Delete</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="8">No books found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

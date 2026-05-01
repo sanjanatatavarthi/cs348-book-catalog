@@ -1,0 +1,164 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f7f7f9;
+  color: #222;
+}
+
+nav {
+  background: #1f2937;
+  padding: 14px 24px;
+}
+
+.nav-left {
+  display: flex;
+  gap: 18px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 18px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+h1, h3 {
+  margin-top: 0;
+}
+
+.flash-list {
+  margin-bottom: 16px;
+}
+
+.flash-message {
+  background: #e8f5e9;
+  border: 1px solid #b7dfba;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.form-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  display: grid;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.report-form {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: end;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+}
+
+input,
+select,
+button {
+  font: inherit;
+}
+
+input,
+select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #c8c8c8;
+  background: white;
+}
+
+.button-row,
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.button.secondary {
+  background: #6b7280;
+}
+
+.button.danger {
+  background: #dc2626;
+}
+
+.actions form {
+  margin: 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.stat-card p {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+th,
+td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #f3f4f6;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Book Report</h1>
+
+  <form method="get" class="form-card report-form">
+    <label>
+      Genre
+      <select name="genre_id">
+        <option value="">All Genres</option>
+        {% for genre in genres %}
+          <option value="{{ genre['genre_id'] }}" {% if selected_filters['genre_id'] == genre['genre_id']|string %}selected{% endif %}>
+            {{ genre['name'] }}
+          </option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>
+      Year
+      <select name="year">
+        <option value="">All Years</option>
+        {% for row in years %}
+          <option value="{{ row['year'] }}" {% if selected_filters['year'] == row['year']|string %}selected{% endif %}>
+            {{ row['year'] }}
+          </option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>
+      Minimum Rating
+      <input type="number" step="0.1" min="0" max="5" name="min_rating" value="{{ selected_filters['min_rating'] }}" placeholder="e.g. 4.6">
+    </label>
+
+    <div class="button-row">
+      <button class="button" type="submit">Generate Report</button>
+      <a class="button secondary" href="{{ url_for('report') }}">Clear Filters</a>
+    </div>
+  </form>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h3>Total Matching Books</h3>
+      <p>{{ stats['total_books'] or 0 }}</p>
+    </div>
+    <div class="stat-card">
+      <h3>Average Rating</h3>
+      <p>{{ stats['avg_rating'] if stats['avg_rating'] is not none else 'N/A' }}</p>
+    </div>
+    <div class="stat-card">
+      <h3>Average Price</h3>
+      <p>
+        {% if stats['avg_price'] is not none %}
+          ${{ '%.2f'|format(stats['avg_price']) }}
+        {% else %}
+          N/A
+        {% endif %}
+      </p>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Rating</th>
+        <th>Reviews</th>
+        <th>Price</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in books %}
+        <tr>
+          <td>{{ book['title'] }}</td>
+          <td>{{ book['author_name'] }}</td>
+          <td>{{ book['genre_name'] }}</td>
+          <td>{{ book['user_rating'] }}</td>
+          <td>{{ book['reviews'] }}</td>
+          <td>${{ '%.2f'|format(book['price']) if book['price'] is not none else '' }}</td>
+          <td>{{ book['year'] }}</td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="7">No books match the selected filters.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
