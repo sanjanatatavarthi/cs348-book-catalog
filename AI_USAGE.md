@@ -7,7 +7,6 @@ I used ChatGPT as an AI assistant while building this project.
 - Generating and refining Flask route structure for the CRUD and report pages
 - Suggesting SQL queries for inserting, updating, deleting, and filtering books
 - Suggesting input validation ideas and transaction structure for Stage 3
-- Helping draft demo scripts and project explanations
 
 ## How I verified or modified the output
 - I read through the generated code and changed it to fit my project design
